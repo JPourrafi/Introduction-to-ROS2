@@ -1,22 +1,6 @@
 <div align="justify">
 
-# Robot Programming with ROS2 Assignments
-
-## Setup:
-create a ros2 workspace
-
-copy the ros2 package `rpros2_week1_assignment` to your workspace
-
-modify the areas noted by `STUDENT IMPLEMENTATION`
-
-build your package
-
-
-<div align="justify">
-
-# Robot Programming with ROS2 Assignment Template
-
-## 🧭 Setup
+## Robot Programming with ROS2 Assignment Template
 
 Follow the steps below to set up your environment and complete the assignment.
 
@@ -66,10 +50,18 @@ Make sure your code runs correctly and meets the assignment objectives.
 ## `Week 1` Turtlesim Target Visualization and Teleop 
 
 ### Assignment Task: 
-your first projects involves developing a turtlesim visualizer and keyboard teleoperation. there exist two nodes called turtle_keyboard_control and turtle_target_plot respectively handle publishing velocity commands to `/turtle1/cmd_vel` and subscribing to `/turtle1/pose`. the first node controls the robot using keyboard and the second node runs a plotter that shows turtle's pose and orientation with a randomly plced box that whenever the robot reaches there, it disapears and teleports to another random place. there is also a lauch file `turtle_target_teleop.launch.py` that should spawn all the nodes together plus the `turtlesim_node`. modify the `STUDENT IMPLEMENTATION` share the result of your code.
+In this first project, you will develop a Turtlesim visualizer and keyboard teleoperation interface.
+
+The package contains two main nodes:
+
+1. turtle_keyboard_control — Publishes velocity commands to the topic `/turtle1/cmd_vel`, allowing you to control the turtle using the keyboard.
+
+2. turtle_target_plot — Subscribes to `/turtle1/pose` and visualizes the turtle’s position and orientation. It also spawns a randomly placed box in the Turtlesim window. When the turtle reaches the box, the box disappears and respawns at another random location.
+
+A launch file named `turtle_target_teleop.launch.py` should start all required nodes together, including turtlesim_node. Modify the `STUDENT IMPLEMENTATION` sections and then run your launch file to verify correct functionality.
 
 ### Reuslts:
-here is a sample markdown code for sharing Figures. it could be .png, .jpg, or .gif files. save your figures in the folder `./figures/rpros2_week1/`
+You should include figures or screen recordings of your results in the folder `./figures/rpros2_week1/`. Below is a sample markdown structure for embedding figures (e.g., `.png`, `.jpg`, or `.gif`):
 
 <div align="center">
 
@@ -87,7 +79,13 @@ here is a sample markdown code for sharing Figures. it could be .png, .jpg, or .
 
 </div>
 
-### challenges:
-express any errors or  challenges during homework and the solutions that helped you fix the problem.
+### Challenges:
+Describe any errors, issues, or challenges you encountered during this assignment.
+Explain the steps or solutions you used to fix them.
+
+**For Example:**
+- Missing dependencies during build.
+- Incorrect topic names or launch configuration.
+- Logical errors in handling keyboard inputs or random target generation.
 
 </div>
