@@ -25,7 +25,9 @@ setup(
     entry_points={
         'console_scripts': [
             'simple_publisher = hello_world.hello_world_pub:main',
-            'simple_subscriber = hello_world.hello_world_sub:main'
+            'simple_subscriber = hello_world.hello_world_sub:main',
+            'simple_service = hello_world.simple_service:main',
+            'simple_client = hello_world.simple_client:main',
         ],
     },
 )
