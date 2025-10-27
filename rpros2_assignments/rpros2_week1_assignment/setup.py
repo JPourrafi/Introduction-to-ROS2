@@ -21,6 +21,7 @@ setup(
         # properly and can be accessed using ROS 2 launch commands.
         #
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        (os.path.join('share', package_name, 'launch'), glob('launch/*'))
     ],
     install_requires=['setuptools'],
     zip_safe=True,
@@ -38,6 +39,8 @@ setup(
             # using 'ros2 run' commands.
             #
             # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+            'turtle_keyboard_control = rpros2_week1_assignment.turtle_keyboard_control:main',
+            'turtle_target_plot = rpros2_week1_assignment.turtle_target_plot:main'
         ],
     },
 )

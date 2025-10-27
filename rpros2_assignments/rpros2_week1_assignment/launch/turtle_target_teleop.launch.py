@@ -57,7 +57,16 @@ def generate_launch_description():
         #       sudo apt install xterm
         #
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-        
+        Node(
+            package='turtlesim',
+            executable='turtlesim_node',
+            name='turtlesim_node'
+        ),
+        Node(
+            package='rpros2_week1_assignment',
+            executable='turtle_target_plot',
+            name='turtle_target_plot'
+        ),
         ExecuteProcess(
             cmd=['xterm', '-e', 'ros2 run rpros2_week1_assignment turtle_keyboard_control'],
             output='screen'

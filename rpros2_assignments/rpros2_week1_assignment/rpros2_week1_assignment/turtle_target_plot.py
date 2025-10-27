@@ -56,6 +56,8 @@ from rclpy.node import Node
 # required for your node, such as Pose from turtlesim.msg.
 #
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+from turtlesim.msg import Pose
+
 
 class TurtleTargetPlotter(Node):
     def __init__(self):
@@ -78,6 +80,14 @@ class TurtleTargetPlotter(Node):
         # within the node so the plot updates dynamically as the turtle moves.
         #
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        self.subscription = self.create_subscription(
+            Pose,
+            '/turtle1/pose',
+            self.pose_callback,
+            10
+        )
+
+        self.timer = self.create_timer(0.1, self.update_plot)
 
         # Turtle state
         self.x = 5.0
@@ -117,6 +127,9 @@ class TurtleTargetPlotter(Node):
         # the subscribed '/turtle1/pose' topic.
         #
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        self.x = msg.x
+        self.y = msg.y
+        self.theta = msg.theta
 
         # Check if turtle is inside the target square
         if (self.target_x <= self.x <= self.target_x + self.target_size) and \
@@ -172,7 +185,10 @@ def main(args=None):
     # and update the plot dynamically.
     #
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    
+    rclpy.init(args = args)
+
+    node = TurtleTargetPlotter()
+
     try:
         rclpy.spin(node)
     except KeyboardInterrupt:

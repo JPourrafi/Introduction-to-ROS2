@@ -49,6 +49,7 @@ from rclpy.node import Node
 # required for your node, such as Twist from geometry_msgs.msg.
 #
 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+from geometry_msgs.msg import Twist
 
 import sys, termios, tty, select
 
@@ -64,6 +65,9 @@ class TurtleKeyboardController(Node):
         # that processes incoming messages should be named 'pose_callback'.
         #
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+        self.publisher_ = self.create_publisher(Twist, '/turtle1/cmd_vel', 10)
+        
+
 
         # Define fixed turtle velocities
         self.linear_speed = 1.5
@@ -73,6 +77,9 @@ class TurtleKeyboardController(Node):
         self.get_logger().info("I: forward | ,: backward | J: turn left | L: turn right | K: stop | Ctrl+C: exit")
 
         self.run()
+
+    def pose_callback(self):
+        pass
 
     def get_key(self):
         """Read a single key press (non-blocking)."""
@@ -94,7 +101,7 @@ class TurtleKeyboardController(Node):
         # J, L, K) and will be published to control the turtle's motion.
         # 
         # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+        twist = Twist()
         try:
             while rclpy.ok():
                 key = self.get_key().lower()
@@ -125,6 +132,7 @@ class TurtleKeyboardController(Node):
                 # TODO: Publish the 'twist' message to the '/turtle1/cmd_vel' topic
                 # 
                 # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+                self.publisher_.publish(twist)
 
         except KeyboardInterrupt:
             pass
@@ -137,13 +145,13 @@ class TurtleKeyboardController(Node):
             # the program ends.
             # 
             # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-
+            twist.linear.x = 0.0
+            twist.angular.z = 0.0
+            self.publisher_.publish(twist)
             self.get_logger().info("Exiting keyboard controller...")
 
 
 def main(args=None):
-    pass
-
     # >>>>>>>>>>> STUDENT IMPLEMENTATION >>>>>>>>>>>
     #
     # TODO: Initialize the ROS 2 Python client library (rclpy) and create
@@ -151,6 +159,11 @@ def main(args=None):
     # node for spinning and allow it to publish velocity commands.
     #
     # >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+    rclpy.init(args=args)
+    node = TurtleKeyboardController()
+    rclpy.spin(node)
+    node.destroy_node()
+    rclpy.shutdown()
 
 
 if __name__ == '__main__':

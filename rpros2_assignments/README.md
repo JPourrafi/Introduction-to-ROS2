@@ -61,31 +61,25 @@ The package contains two main nodes:
 A launch file named `turtle_target_teleop.launch.py` should start all required nodes together, including turtlesim_node. Modify the `STUDENT IMPLEMENTATION` sections and then run your launch file to verify correct functionality.
 
 ### Reuslts:
-You should include figures or screen recordings of your results in the folder `./figures/rpros2_week1/`. Below is a sample markdown structure for embedding figures (e.g., `.png`, `.jpg`, or `.gif`):
+The Results of the implementation of first week tasks are available down below. My turtle can move to the desired locations by my cmd commands.
 
 <div align="center">
 
-| <img src=".\figures\week1\turtle_target_teleop_node_example.gif" alt="turtle_target_teleop_node_example" width="1024"/> |
+| <img src=".\figures\week1\week1-gif1.gif" alt="turtle_target_teleop_node_example" width="1024"/> |
 |:--:| 
-| <b>Fig. 1.</b> Turtlesim Target Visualization and Teleop Node Example |
+| <b>Fig. 1.</b> Turtlesim Target Visualization and Teleop Node |
 
 </div>
 
 <div align="center">
   
-| <img src=".\figures\week1\turtle_target_teleop_launch_example.gif" alt="turtle_target_teleop_launch_example" width="1024"/> |
+| <img src=".\figures\week1\week1-gif2.gif" alt="turtle_target_teleop_launch_example" width="1024"/> |
 |:--:| 
-| <b>Fig. 2.</b> Turtlesim Target Visualization and Teleop Launch Example |
+| <b>Fig. 2.</b> Turtlesim Target Visualization and Teleop Launch |
 
 </div>
 
 ### Challenges:
-Describe any errors, issues, or challenges you encountered during this assignment.
-Explain the steps or solutions you used to fix them.
-
-**For Example:**
-- Missing dependencies during build.
-- Incorrect topic names or launch configuration.
-- Logical errors in handling keyboard inputs or random target generation.
+-Incorrect package names in the launch and setup files caused issues, which took me some time to resolve.
 
 </div>
